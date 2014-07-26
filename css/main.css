@@ -1,0 +1,26 @@
+.select-group {
+  display: block;
+  overflow: hidden;
+  border: solid 1px #000;
+}
+.group-half {
+  width: 50%;
+  height: 0;
+  padding-bottom: calc(56.25% / 2);
+  padding-top: 0px;
+}
+
+
+svg {
+  margin-left: -50%;
+  margin-top: -72%; 
+  display: block;
+}
+
+#loader { 
+  fill: #0088cc;
+}
+
+#border { 
+  fill: #00517a;
+}
