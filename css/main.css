@@ -117,7 +117,8 @@ body{
 .select-group {
   display: block;
   overflow: hidden;
-  border: solid 1px #000;
+  border: solid 2px #CCC;
+  background-color: #FFF;
 }
 .group-half {
   width: 50%;
@@ -134,9 +135,5 @@ svg {
 }
 
 #loader { 
-  fill: #0088cc;
-}
-
-#border { 
-  fill: #00517a;
+  fill: #EFEFEF;
 }
