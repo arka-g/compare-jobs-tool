@@ -70,7 +70,6 @@ function draw() {
   //  d = Math.round( d * 1e3 ) / 1e3;
   //});
 loader.setAttribute( 'd', anim );
-border.setAttribute( 'd', anim );
 console.log("drawing");
 };
 
