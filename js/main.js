@@ -48,14 +48,14 @@ $(function() {
 
 
 
-var loader = document.getElementById('loader')
-, border = document.getElementById('border')
+var $groupSvg
+, $groupPos
 , a = 0
 , p = Math.PI
 , t = 30
 , i = 0;
 
-function draw() {
+function drawforward() {
   a++;
   a %= 360;
   var r = ( a * p / 180 )
@@ -66,23 +66,34 @@ function draw() {
   + mid + ' 1 ' 
   +  x  + ' ' 
   +  y  + ' z';
-  //[x,y].forEach(function( d ){
-  //  d = Math.round( d * 1e3 ) / 1e3;
-  //});
-loader.setAttribute( 'd', anim );
-console.log("drawing");
+  $groupSvg.setAttribute( 'd', anim );
 };
 
-function gotoPie(i) {
-  console.log('gottoP');
-  for (var j = 0; j < i; ++j) {
-    doSetTimeout(j);
-    console.log('recursion');
+function drawbackward() {
+  a--;
+  a %= 360;
+  var r = ( a * p / 180 )
+  , x = Math.sin( r ) * 125
+  , y = Math.cos( r ) * - 125
+  , mid = ( a > 180 ) ? 1 : 0
+  , anim = 'M 0 0 v -125 A 125 125 1 ' 
+  + mid + ' 1 ' 
+  +  x  + ' ' 
+  +  y  + ' z';
+  $groupSvg.setAttribute( 'd', anim );
+};
+
+function goforwardPie(EleId, EleRad) {
+  $groupSvg = document.getElementById(EleId);
+  for (var j = 0; j < EleRad; ++j) {
+    setTimeout(drawforward, j*15);
   }
-
 };
-function doSetTimeout(j) {
-  setTimeout(draw, j*20);
-  console.log(j);
-}
-gotoPie(120);
+function gobackwardPie(EleId, EleRad) {
+  $groupSvg = document.getElementById(EleId);
+  for (var j = 0; j < EleRad; ++j) {
+    setTimeout(drawbackward, j*15);
+  }
+};
+
+goforwardPie("group1",119);
