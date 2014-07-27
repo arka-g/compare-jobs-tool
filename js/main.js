@@ -90,13 +90,13 @@ function drawbackward() {
 function goforwardPie(EleId, EleRad) {
   $groupSvg = document.getElementById(EleId);
   for (var j = 0; j < EleRad; ++j) {
-    setTimeout(drawforward, j*15);
+    setTimeout(drawforward, j*3);
   }
 };
 function gobackwardPie(EleId, EleRad) {
   $groupSvg = document.getElementById(EleId);
   for (var j = 0; j < EleRad; ++j) {
-    setTimeout(drawbackward, j*15);
+    setTimeout(drawbackward, j*3);
   }
 };
 
