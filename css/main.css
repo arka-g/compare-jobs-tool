@@ -27,6 +27,7 @@ body{
     outline: none;
     font-family: helvetica;
     color:black;
+    z-index: 50000;
 }
 
 .wrapper-dropdown-1:after {
@@ -116,7 +117,7 @@ body{
 
 .select-group {
   display: block;
-  overflow: hidden;
+  position: relative;
   border: solid 2px #DEDEDE;
   background-color: #FEFEFE;
 }
@@ -127,7 +128,15 @@ body{
   padding-top: 0px;
   display: inline-block;
 }
-
+.group-front {
+    position: absolute;
+}
+.group-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+}
 
 svg {
   margin-left: -50%;

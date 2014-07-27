@@ -58,6 +58,8 @@ var $groupSvg
 function drawforward() {
   a++;
   a %= 360;
+  var colorchange = 239 - a / 10;
+  $('.group-back').css('background-color', 'rgb('+colorchange+','+colorchange+','+colorchange+')');
   var r = ( a * p / 180 )
   , x = Math.sin( r ) * 125
   , y = Math.cos( r ) * - 125
@@ -72,6 +74,8 @@ function drawforward() {
 function drawbackward() {
   a--;
   a %= 360;
+  var colorchange = 239 - a / 10;
+  $('.group-back').css('background-color', 'rgb('+colorchange+','+colorchange+','+colorchange+')');
   var r = ( a * p / 180 )
   , x = Math.sin( r ) * 125
   , y = Math.cos( r ) * - 125
@@ -96,4 +100,4 @@ function gobackwardPie(EleId, EleRad) {
   }
 };
 
-goforwardPie("group1",119);
+goforwardPie("group1",120);
