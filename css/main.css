@@ -27,7 +27,7 @@ body{
     font-family: : "Exo 2", helvetica,Arial,sans-serif;
 }
 
-.wrapper-dropdown-1 {
+.dropdown-button {
     /* Size and position */
     position: relative; /* Enable absolute positionning for children and pseudo elements */
     width: 200px;
@@ -44,7 +44,7 @@ body{
     /*z-index:0;*/
 }
 
-.wrapper-dropdown-1:after {
+.dropdown-button:after {
     content: "";
     width: 0;
     height: 0;
@@ -57,7 +57,7 @@ body{
     border-color: grey transparent; 
 }
 
-.wrapper-dropdown-1 .dropdown {
+.dropdown-button .dropdown-list {
  /* Size & position */
     position: absolute;
     top: 100%;
@@ -80,7 +80,7 @@ body{
     z-index: 6000;
 }
 
-.wrapper-dropdown-1 .dropdown li a {
+.dropdown-button .dropdown-list li a {
   display: block;
   text-decoration: none;
   color: #333;
@@ -94,38 +94,41 @@ body{
 }
 
 /* Hover state */
-
-.wrapper-dropdown-1 .dropdown li:hover a {
+.dropdown-button .dropdown-list li:hover a {
     color: grey;
     background: black;
 }
-
 /* Active state */
-
-.wrapper-dropdown-1.active:after {
+.dropdown-button.dropdown-active:after {
     border-width: 0 6px 6px 6px;
 }
-
-.wrapper-dropdown-1.active .dropdown {
+.dropdown-button.dropdown-active .dropdown-list {
     opacity: 1;
     pointer-events: auto;
 }
+/* Selected State */
+.dropdown-button.dropdown-selected {
+    background-color: #4cbeff;
+    color: #FFF;
+}
+
+
 
 /* No CSS3 support */
 
-/*.no-opacity       .wrapper-dropdown-1 .dropdown,
-.no-pointerevents .wrapper-dropdown-1 .dropdown {
+/*.no-opacity       .dropdown-button .dropdown-list,
+.no-pointerevents .dropdown-button .dropdown-list {
     display: none;
     opacity: 1; 
     pointer-events: auto; 
 }
 
-.no-opacity       .wrapper-dropdown-1.active .dropdown,
-.no-pointerevents .wrapper-dropdown-1.active .dropdown {
+.no-opacity       .dropdown-button.dropdown-active .dropdown-list,
+.no-pointerevents .dropdown-button.dropdown-active .dropdown-list {
     display: block;
 }*/
 
-.navbanner span {
+.nav-banner span {
     width: 100%;
     text-align: center;
     margin-bottom: 0;
@@ -134,7 +137,7 @@ body{
     font-size: 400%;
     color: #FFF;
 }
-.navbanner {
+.nav-banner {
     width: 100%;
     height: 0;
     padding-bottom: calc(8%);
@@ -162,8 +165,10 @@ body{
   display: inline-block;
 }
 .group-front {
+    width: 100%;
+    height: 100%;
     position: absolute;
-    z-index:6000;
+    z-index: 300;
 }
 .group-back {
     width: 100%;

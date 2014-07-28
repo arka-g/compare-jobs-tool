@@ -2,6 +2,8 @@
 $(document).ready(function() {
   var $groupSvg
   , $groupPos
+  , $curGroupNum = 0
+  , $preGroupNum = 0
   , a = 0
   , p = Math.PI
   , t = 30
@@ -40,9 +42,13 @@ $(document).ready(function() {
   };
 
   function goforwardPie(EleId, EleRad) {
-    $groupSvg = document.getElementById(EleId);
-    for (var j = 0; j < EleRad; ++j) {
-      setTimeout(drawforward, j*3);
+    if (EleRad < 0) {
+      gobackwardPie(EleId, -EleRad);
+    } else {
+      $groupSvg = document.getElementById(EleId);
+      for (var j = 0; j < EleRad; ++j) {
+        setTimeout(drawforward, j*3);
+      }
     }
   };
   function gobackwardPie(EleId, EleRad) {
@@ -51,28 +57,41 @@ $(document).ready(function() {
       setTimeout(drawbackward, j*3);
     }
   };
-
-  goforwardPie("group1",120);
-
-  $('.wrapper-dropdown-1').on(
+  function updatePieChart(Ele) {
+    var $CurrentGroup = $('.dropdown-button', Ele.parent().parent().parent());
+    $preGroupNum = $curGroupNum;
+    $curGroupNum = 0;
+    $CurrentGroup.each(function() {
+      if ($(this).hasClass('dropdown-selected')) {
+        $curGroupNum++;
+      } else {
+      }
+    });
+    goforwardPie($('path', Ele.parent().parent().parent().parent()).attr('id'), 360 * ($curGroupNum - $preGroupNum) / $CurrentGroup.length);
+  }
+  $('.dropdown-button').on(
     'mouseenter', function() {
-    $(this).toggleClass('active');
+    $(this).toggleClass('dropdown-active');
   });
-  $('.wrapper-dropdown-1').on(
+  $('.dropdown-button').on(
     'mouseleave', function() {
-      if ($(this).hasClass('active')) {
-        $(this).toggleClass('active');    
+      if ($(this).hasClass('dropdown-active')) {
+        $(this).toggleClass('dropdown-active');    
       } else {
 
       }
   });
-  $('.wrapper-dropdown-1 .dropdown li').on(
+  $('.dropdown-button .dropdown-list li').on(
     'click', function() {
-      $(this).parent().parent().toggleClass('active');
-      $(this).parent().parent().css("background","#4cbeff");
-      $(this).parent().parent().css("color","#FFF");
-      var text = $(this).text();
-      $('span', $(this).parent().parent()).text('You selected: ' + text);
+      var $CurrentDropdown = $(this).parent().parent();
+      $CurrentDropdown.toggleClass('dropdown-active');
+      if ($CurrentDropdown.hasClass('dropdown-selected')) {
+      } else {
+        $CurrentDropdown.toggleClass('dropdown-selected');
+      };
+      
+      $('span', $CurrentDropdown).text('You selected: ' + $(this).text());
+      updatePieChart($(this));
     });
 });
 
