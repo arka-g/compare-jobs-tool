@@ -24,6 +24,7 @@ src: url('../assets/Braxton Free.otf');
 
 body{
     background-color: #EFEFEF;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .dropdown-button {
@@ -233,4 +234,57 @@ body{
   font-size: 12px;
   color: #FFF;
   padding-left: 3%;
+}
+
+/* navigation menu */
+ul.nav-menu {  
+    background: #333; 
+    width: 100%; 
+    padding: 0;
+    margin: 0;
+    list-style-type:none;
+}
+
+ul.nav-menu li { 
+    display: inline-block; 
+    text-align: center;
+    margin-right: 1px;
+
+}
+
+ul.nav-menu li a { 
+    cursor: pointer; 
+    display: block; 
+    color: white; 
+    text-decoration: none;
+    padding: 10px; 
+}
+
+ul.nav-menu li:hover { 
+  background-color: #555;  
+}
+
+.show-menu {
+  text-decoration: none;
+  color: #fff;
+  background: #333;
+  text-align: center;
+  padding: 10px 0;
+  display: none;
+}
+
+@media screen and (max-width : 760px){
+  /*Make dropdown links appear inline*/
+  ul.nav-menu {
+    display: none;
+    height:auto;
+  }
+
+  ul.nav-menu li{
+    width: 100%;
+  }
+
+  .show-menu{
+    display:block;
+  }
 }
