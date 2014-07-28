@@ -1,10 +1,16 @@
 /* GLOBALS */
 
-@font-face {
+/*@font-face {
 font-family: Braxon;
 src: url('../assets/Braxton Free.otf');
-}
+}*/
 
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Exo 2 Medium'), local('Exo2-Medium'), url(http://themes.googleusercontent.com/static/fonts/exo2/v1/SJSKlaAoPzG8E6EMHXZfenYhjbSpvc47ee6xR_80Hnw.woff) format('woff');
+}
 
 *,
 *:after,
@@ -15,8 +21,10 @@ src: url('../assets/Braxton Free.otf');
     padding: 0;
     margin: 0;
 }
+
 body{
     background-color: #EFEFEF;
+    font-family: : "Exo 2", helvetica,Arial,sans-serif;
 }
 
 .wrapper-dropdown-1 {
@@ -31,9 +39,9 @@ body{
     border-left: 5px solid grey;
     cursor: pointer;
     outline: none;
-    font-family: helvetica;
     color:black;
-    z-index: 50000;
+    font-family: 'Exo 2';
+    /*z-index:0;*/
 }
 
 .wrapper-dropdown-1:after {
@@ -68,6 +76,8 @@ body{
     /* Hiding */
     opacity: 0;
     pointer-events: none;
+
+    z-index: 6000;
 }
 
 .wrapper-dropdown-1 .dropdown li a {
@@ -149,6 +159,7 @@ body{
   position: relative;
   border: solid 2px #DEDEDE;
   background-color: #EFEFEF;
+  z-index:0;
 }
 .group-half {
   width: calc(50% - 2px);
@@ -156,9 +167,11 @@ body{
   padding-bottom: calc(56.25% / 2);
   padding-top: 0px;
   display: inline-block;
+  z-index: 0;
 }
 .group-front {
     position: absolute;
+    z-index:0;
 }
 .group-back {
     width: 100%;
@@ -171,6 +184,7 @@ svg {
   margin-left: -50%;
   margin-top: -72%; 
   display: block;
+  z-index:0;
 }
 
 .svg-loader { 
