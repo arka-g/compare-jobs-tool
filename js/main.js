@@ -93,5 +93,6 @@ $(document).ready(function() {
       $('span', $CurrentDropdown).text('You selected: ' + $(this).text());
       updatePieChart($(this));
     });
+
 });
 
