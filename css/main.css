@@ -24,6 +24,7 @@ src: url('../assets/Braxton Free.otf');
 
 body{
     background-color: #EFEFEF;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .dropdown-button {
