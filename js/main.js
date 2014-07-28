@@ -94,5 +94,16 @@ $(document).ready(function() {
       updatePieChart($(this));
     });
 
+    $('.show-menu').on(
+    'click', function(){
+      if($('ul.nav-menu').css("display","none")){
+        $('ul.nav-menu').css("display","block");
+      }
+      else{
+        $('ul.nav-menu').css("display","none");
+      }
+      
+    });
+
 });
 
