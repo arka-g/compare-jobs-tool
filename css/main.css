@@ -163,7 +163,7 @@ body{
 }
 .group-front {
     position: absolute;
-    z-index: 300;
+    z-index:6000;
 }
 .group-back {
     width: 100%;
@@ -177,7 +177,6 @@ svg {
   margin-left: -50%;
   margin-top: -72%; 
   display: block;
-  z-index:0;
 }
 
 .svg-loader { 
