@@ -5,13 +5,13 @@ font-family: Braxon;
 src: url('../assets/Braxton Free.otf');
 }*/
 
-@font-face {
+/*@font-face {
   font-family: 'Exo 2';
   font-style: normal;
   font-weight: 500;
   src: local('Exo 2 Medium'), local('Exo2-Medium'), url(http://themes.googleusercontent.com/static/fonts/exo2/v1/SJSKlaAoPzG8E6EMHXZfenYhjbSpvc47ee6xR_80Hnw.woff) format('woff');
 }
-
+*/
 *,
 *:after,
 *:before {

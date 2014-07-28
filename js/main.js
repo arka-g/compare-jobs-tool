@@ -1,19 +1,19 @@
 //load DOM
 $(document).ready(function() {
-  var $groupSvg
+  var $groupTag
+  , $groupSvg
   , $groupPos
   , $curGroupNum = 0
   , $preGroupNum = 0
   , a = 0
   , p = Math.PI
-  , t = 30
-  , i = 0;
+  , t = 30;
 
   function drawforward() {
     a++;
     a %= 360;
     var colorchange = 239 - a / 10;
-    $('#group1').parent().parent().css('background-color', 'rgb('+colorchange+','+colorchange+','+colorchange+')');
+    $($groupSvg.parentNode.parentElement).css('background-color', 'rgb('+colorchange+','+colorchange+','+colorchange+')');
     var r = ( a * p / 180 )
     , x = Math.sin( r ) * 125
     , y = Math.cos( r ) * - 125
@@ -29,7 +29,7 @@ $(document).ready(function() {
     a--;
     a %= 360;
     var colorchange = 239 - a / 10;
-    $('#group1').parent().parent().css('background-color', 'rgb('+colorchange+','+colorchange+','+colorchange+')');
+    $($groupSvg.parentNode.parentElement).css('background-color', 'rgb('+colorchange+','+colorchange+','+colorchange+')');
     var r = ( a * p / 180 )
     , x = Math.sin( r ) * 125
     , y = Math.cos( r ) * - 125
