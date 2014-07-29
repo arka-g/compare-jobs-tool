@@ -81,6 +81,14 @@ $(document).ready(function() {
 
       }
   });
+  $('.dropdown-button').on(
+    'tap', function() {
+      if (!$(this).hasClass('dropdown-active')) {
+        $(this).toggleClass('dropdown-active');    
+      } else {
+
+      }
+  });
   $('.dropdown-button .dropdown-list li').on(
     'click', function() {
       var $CurrentDropdown = $(this).parent().parent();
