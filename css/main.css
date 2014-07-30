@@ -286,10 +286,14 @@ ul.nav-menu li:hover {
   display: none;
 }
 
+.switch{
+  display:block; 
+}
+
 @media(max-width : 760px){
   /*Make dropdown links appear inline*/
   ul.nav-menu {
-    display: none;
+    display: none; 
     height:auto;
   }
 

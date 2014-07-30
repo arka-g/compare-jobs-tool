@@ -104,12 +104,22 @@ $(document).ready(function() {
 
     $('.show-menu').on(
     'click', function(){
-      if($('ul.nav-menu').css("display","none")){
+      // $('ul.nav-menu').toggleClass('switch');
+      if (!$('ul.nav-menu').hasClass('switch')){
         $('ul.nav-menu').css("display","block");
+        $('ul.nav-menu').toggleClass('switch');
       }
       else{
         $('ul.nav-menu').css("display","none");
+        $('ul.nav-menu').toggleClass('switch');
       }
+
+      // if($('ul.nav-menu').css("display","none")){
+      //   $('ul.nav-menu').css("display","block");
+      // }
+      // else{
+      //   $('ul.nav-menu').css("display","none");
+      // }
       
     });
 
