@@ -286,7 +286,7 @@ ul.nav-menu li:hover {
   display: none;
 }
 
-@media screen and (max-width : 760px){
+@media(max-width : 760px){
   /*Make dropdown links appear inline*/
   ul.nav-menu {
     display: none;
@@ -300,4 +300,38 @@ ul.nav-menu li:hover {
   .show-menu{
     display:block;
   }
+
+  .dropdown-button {
+    /* Size and position */
+    position: relative; /* Enable absolute positionning for children and pseudo elements */
+    width: 150px;
+    margin: 0 auto;
+    padding: 2px 3px;
+    /* Styles */
+    background: #fff;
+    border-left: 3px solid grey;
+    cursor: pointer;
+    outline: none;
+    color: #000;
+    font-family: helvetica;
+    /*z-index:0;*/
+  }
+
+  .dropdown-button .dropdown-list{
+    left:-3px;
+  }
+
+  .dropdown-button .dropdown-list li a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    border-left: 3px solid;
+    padding: 3px;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+  }
 }
+
