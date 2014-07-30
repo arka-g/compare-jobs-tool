@@ -12,8 +12,11 @@ $(document).ready(function() {
   function drawforward() {
     a++;
     a %= 360;
-    var colorchange = 239 - a / 10;
-    $($groupSvg.parentNode.parentElement).css('background-color', 'rgb('+colorchange+','+colorchange+','+colorchange+')');
+    var redishChange = 255 - a / 2;
+    var greenishChange = 255 - a / 2;
+    var blueishChange = 255 - a / 10;
+    console.log(blueishChange);
+    $($groupSvg.parentNode.parentElement).css('background-color', 'rgb('+redishChange+','+greenishChange+','+blueishChange+')');
     var r = ( a * p / 180 )
     , x = Math.sin( r ) * 125
     , y = Math.cos( r ) * - 125
@@ -29,7 +32,7 @@ $(document).ready(function() {
     a--;
     a %= 360;
     var colorchange = 239 - a / 10;
-    $($groupSvg.parentNode.parentElement).css('background-color', 'rgb('+colorchange+','+colorchange+','+colorchange+')');
+    $($groupSvg.parentNode.parentElement).css('background-color', 'rgb('+colorchange+','+colorchange+','+colorchange+200+')');
     var r = ( a * p / 180 )
     , x = Math.sin( r ) * 125
     , y = Math.cos( r ) * - 125
@@ -58,7 +61,7 @@ $(document).ready(function() {
     }
   };
   function updatePieChart(Ele) {
-    var $CurrentGroup = $('.dropdown-button', Ele.parent().parent().parent());
+    var $CurrentGroup = $('.dropdown-button', Ele.parent().parent().parent().parent());
     $preGroupNum = $curGroupNum;
     $curGroupNum = 0;
     $CurrentGroup.each(function() {
@@ -67,7 +70,7 @@ $(document).ready(function() {
       } else {
       }
     });
-    goforwardPie($('path', Ele.parent().parent().parent().parent()).attr('id'), 360 * ($curGroupNum - $preGroupNum) / $CurrentGroup.length);
+    goforwardPie($('path', Ele.parent().parent().parent().parent().parent()).attr('id'), 360 * ($curGroupNum - $preGroupNum) / $CurrentGroup.length);
   }
   $('.dropdown-button').on(
     'mouseenter', function() {
@@ -89,16 +92,23 @@ $(document).ready(function() {
 
       }
   });
+  $('.dropdown-list-down').on(
+    'click', function() {
+      $('.dropdown-list-wrapper', $(this).parent()).animate({ 
+        scrollTop: "200px",
+        duration: 100 
+      });
+    })
   $('.dropdown-button .dropdown-list li').on(
     'click', function() {
-      var $CurrentDropdown = $(this).parent().parent();
+      var $CurrentDropdown = $(this).parent().parent().parent();
       $CurrentDropdown.toggleClass('dropdown-active');
       if ($CurrentDropdown.hasClass('dropdown-selected')) {
       } else {
         $CurrentDropdown.toggleClass('dropdown-selected');
       };
       
-      $('span', $CurrentDropdown).text('You selected: ' + $(this).text());
+      $('span', $CurrentDropdown).text($(this).text());
       updatePieChart($(this));
     });
 

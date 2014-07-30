@@ -1,0 +1,27 @@
+.select-group {
+	margin-top: 20px;
+	min-height: 180px;
+}
+
+
+.dropdown-button {
+
+
+}
+
+.dropdown-list {
+	z-index: 500;
+}
+.dropdown-list-wrapper {
+	max-height: 300px;
+	overflow-y:scroll;
+}
+
+.dropdown-list-down {
+	position: relative;
+	height: 30px;
+	width: 100%;
+	bottom: 0;
+	display: block;
+	background: #0099FF;
+}
