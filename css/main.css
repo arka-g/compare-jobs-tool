@@ -144,8 +144,8 @@ ul.nav-menu li a {
   fill: #FFF;
 }
 .dropdown-button {
+  width:90%;
   position: relative;
-  width: 200px;
   margin: 10px auto;
   padding: 10px 15px;
   /* TEMP */
