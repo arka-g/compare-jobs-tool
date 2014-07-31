@@ -61,7 +61,7 @@ $(document).ready(function() {
     }
   };
   function updatePieChart(Ele) {
-    var $CurrentGroup = $('.dropdown-button', Ele.parent().parent().parent().parent());
+    var $CurrentGroup = $('.dropdown-button', Ele.parent().parent().parent().parent().parent());
     $preGroupNum = $curGroupNum;
     $curGroupNum = 0;
     $CurrentGroup.each(function() {
@@ -70,7 +70,7 @@ $(document).ready(function() {
       } else {
       }
     });
-    goforwardPie($('path', Ele.parent().parent().parent().parent().parent()).attr('id'), 360 * ($curGroupNum - $preGroupNum) / $CurrentGroup.length);
+    goforwardPie($('path', Ele.parent().parent().parent().parent().parent().parent()).attr('id'), 360 * ($curGroupNum - $preGroupNum) / $CurrentGroup.length);
   }
   $('.dropdown-button').on(
     'mouseenter', function() {
@@ -108,7 +108,7 @@ $(document).ready(function() {
         $CurrentDropdown.toggleClass('dropdown-selected');
       };
       
-      $('span', $CurrentDropdown).text($(this).text());
+      $('span', $CurrentDropdown).text("You selected: "+$(this).text());
       updatePieChart($(this));
     });
 

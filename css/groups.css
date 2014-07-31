@@ -1,6 +1,6 @@
 .select-group {
 	margin-top: 20px;
-	min-height: 220px;
+	min-height: 240px;
 }
 
 
@@ -10,7 +10,7 @@
 .group-title-main {
 	width: 57.4%;
 	height: 45px;
-	min-width: 220px;
+	min-width: 240px;
 	margin-left: 45px;
 	position: absolute;
 	background: #ACACAC;
@@ -33,10 +33,12 @@
 .group-title-sub {
 	margin-left: 45px;
 	width: calc(100% - 45px);
-	height: 40px;
+	height: 45px;
 	position: absolute;
 	background: #EFEFEF;
 	color: #000;
+	border-bottom: 4px solid #ACACAC;
+	z-index: 100;
 }
 .group-title-sub h2 {
 	padding-top: 6px;

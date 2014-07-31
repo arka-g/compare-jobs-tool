@@ -146,7 +146,7 @@ ul.nav-menu li a {
 .dropdown-button {
   width:90%;
   position: relative;
-  margin: 10px auto;
+  margin: 4% auto;
   padding: 10px 15px;
   /* TEMP */
   background: #EFEFEF;
@@ -157,6 +157,9 @@ ul.nav-menu li a {
   color: #000;
   font-family: helvetica;
   font-size: 18px;
+}
+.group-full .dropdown-button {
+  margin: 2% auto;
 }
 .dropdown-button:after {
   content: "";
@@ -209,7 +212,8 @@ ul.nav-menu li a {
   pointer-events: auto;
 }
 .dropdown-button.dropdown-selected {
-  background-color: #4cbeff;
+/*  background-color: #4cbeff;*/
+  background-color: #333333;
   color: #FFF;
 }
 .switch{
