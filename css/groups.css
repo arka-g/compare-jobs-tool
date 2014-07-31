@@ -6,9 +6,35 @@
 
 .dropdown-button {
 
-
+}
+.group-title {
+	width: 57.5%;
+	height: 18%;
+	margin-left: 10%;
+	position: absolute;
+	background: #EFEFEF;
+	-webkit-transform-origin: 0 0;
+    -moz-transform-origin:    0 0;
+    -ms-transform-origin:     0 0;
+    -o-transform-origin:      0 0;
+    
+    -webkit-transform: rotate(90deg); 
+    -moz-transform:    rotate(90deg); 
+    -ms-transform:     rotate(90deg); 
+    -o-transform:      rotate(90deg); 
 }
 
+.group-front {
+	margin-left: 10%;
+  width: 90%;
+}
+.group-back {
+	margin-left: 10%;
+  width: 90%;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+}
 .dropdown-list {
 	z-index: 500;
 }
