@@ -1,18 +1,22 @@
 .select-group {
 	margin-top: 20px;
-	min-height: 180px;
+	min-height: 220px;
 }
 
 
 .dropdown-button {
 
 }
-.group-title {
-	width: 57.5%;
-	height: 18%;
-	margin-left: 10%;
+.group-title-main {
+	width: 57.4%;
+	height: 45px;
+	min-width: 220px;
+	margin-left: 45px;
 	position: absolute;
-	background: #EFEFEF;
+	background: #ACACAC;
+	color: #FFF;
+	padding-top: 5px;
+	padding-left: 10px;
 	-webkit-transform-origin: 0 0;
     -moz-transform-origin:    0 0;
     -ms-transform-origin:     0 0;
@@ -23,20 +27,40 @@
     -ms-transform:     rotate(90deg); 
     -o-transform:      rotate(90deg); 
 }
+.group-title-main h1 {
+	padding-left: 0;
+}
+.group-title-sub {
+	margin-left: 45px;
+	width: calc(100% - 45px);
+	height: 40px;
+	position: absolute;
+	background: #EFEFEF;
+	color: #000;
+}
+.group-title-sub h2 {
+	padding-top: 6px;
+	padding-left: 5%;
+}
+.group-full .group-title-main {
+	width: 28.4%;
+
+}
+
 
 .group-front {
-	margin-left: 10%;
-  width: 90%;
+	margin-left: 45px;
+	width: calc(100% - 45px);
 }
 .group-back {
-	margin-left: 10%;
-  width: 90%;
+	margin-left: 45px;
+	width: calc(100% - 45px);
   height: 100%;
   position: absolute;
   overflow: hidden;
 }
 .dropdown-list {
-	z-index: 500;
+z-index: 300;
 }
 .dropdown-list-wrapper {
 	max-height: 300px;
