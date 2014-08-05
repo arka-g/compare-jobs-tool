@@ -54,12 +54,14 @@ $(document).ready(function() {
       }
     }
   };
+
   function gobackwardPie(EleId, EleRad) {
     $groupSvg = document.getElementById(EleId);
     for (var j = 0; j < EleRad; ++j) {
       setTimeout(drawbackward, j*3);
     }
   };
+
   function updatePieChart(Ele) {
     var $CurrentGroup = $('.dropdown-button', Ele.parent().parent().parent().parent().parent());
     $preGroupNum = $curGroupNum;
@@ -72,43 +74,39 @@ $(document).ready(function() {
     });
     goforwardPie($('path', Ele.parent().parent().parent().parent().parent().parent()).attr('id'), 360 * ($curGroupNum - $preGroupNum) / $CurrentGroup.length);
   }
+
   $('.dropdown-button').on(
     'mouseenter', function() {
     $(this).toggleClass('dropdown-active');
   });
+
   $('.dropdown-button').on(
     'mouseleave', function() {
       if ($(this).hasClass('dropdown-active')) {
         $(this).toggleClass('dropdown-active');    
       } else {
-
       }
   });
-/*  $('.dropdown-button').on(
-    'tap', function() {
-      if (!$(this).hasClass('dropdown-active')) {
-        $(this).toggleClass('dropdown-active');    
-      } else {
 
-      }
-  });*/
   $('.dropdown-list-down').on(
     'click', function() {
       $('.dropdown-list-wrapper', $(this).parent()).animate({ 
         scrollTop: "200px",
         duration: 100 
       });
-    })
+    });
+
   $('.dropdown-button .dropdown-list li').on(
     'click', function(e) {
       var $CurrentDropdown = $(this).parent().parent().parent();
       $CurrentDropdown.toggleClass('dropdown-active');
       if ($CurrentDropdown.hasClass('dropdown-selected')) {
-      } else {
+      } 
+      else {
         $CurrentDropdown.toggleClass('dropdown-selected');
       };
       
-      $('span', $CurrentDropdown).text("You selected: "+$(this).text());
+      $('span', $CurrentDropdown).text("You selected: " + $(this).text());
       updatePieChart($(this));
       e.preventDefault();
     });
@@ -123,8 +121,6 @@ $(document).ready(function() {
         $('ul.nav-menu').css("display","none");
         $('ul.nav-menu').toggleClass('switch');
       }
-      
     });
-
 });
 
