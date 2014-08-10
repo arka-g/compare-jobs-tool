@@ -54,13 +54,7 @@
 	margin-left: 45px;
 	width: calc(100% - 45px);
 }
-.group-back {
-	margin-left: 45px;
-	width: calc(100% - 45px);
-  height: 100%;
-  position: absolute;
-  overflow: hidden;
-}
+
 .dropdown-list {
 z-index: 300;
 }
@@ -76,4 +70,7 @@ z-index: 300;
 	bottom: 0;
 	display: block;
 	background: #0099FF;
+}
+.mobile {
+	background: #E00;
 }

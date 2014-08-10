@@ -115,22 +115,7 @@ ul.nav-menu li a {
   height: 100%;
   position: absolute;
 }
-.group-back {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  overflow: hidden;
-}
-.full-back svg {
-  margin-left: -50%;
-  margin-top: -86%; 
-  display: block;
-}
-.half-back svg {
-  margin-left: -50%;
-  margin-top: -72%; 
-  display: block;
-}
+
 /*center dropdown*/
 .dd-wrapper{
   position: relative;
@@ -140,9 +125,7 @@ ul.nav-menu li a {
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
 }
-.svg-loader { 
-  fill: #FFF;
-}
+
 .dropdown-button {
   width:90%;
   position: relative;
