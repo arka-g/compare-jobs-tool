@@ -37,10 +37,15 @@ $(document).ready(function() {
   $('.show-menu').on(
     'click', function(){
       if (!$('ul.nav-menu').hasClass('switch')){
+        $('ul.nav-menu').slideDown(500);
+        $('.show-menu').css("background", "#ffcd00");
         $('ul.nav-menu').css("display","block");
         $('ul.nav-menu').toggleClass('switch');
       }
       else{
+        //not working yet
+        $('ul.nav-menu').slideUp(500);
+        $('.show-menu').css("background", "#333");
         $('ul.nav-menu').css("display","none");
         $('ul.nav-menu').toggleClass('switch');
       }
