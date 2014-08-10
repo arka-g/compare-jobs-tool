@@ -288,3 +288,24 @@ ul.nav-menu li a {
     transition: all 0.3s ease-out;
   }*/
 }
+
+.rectangle-list{
+  max-height: 100%;
+  overflow-y:scroll; 
+}
+
+.rectangle-list li{
+    position: relative;
+    display: block;
+    padding: .4em .4em .4em .8em;
+    margin: .5em 0 .5em 2.5em;
+    background: #ddd;
+    color: #444;
+    text-decoration: none;
+    transition: all .3s ease-out;  
+}
+
+.rectangle-list li:hover{
+    background: #eee;
+}   
+
