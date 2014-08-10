@@ -45,7 +45,7 @@ $(document).ready(function() {
         $('ul.nav-menu').toggleClass('switch');
       }
     });
-  
+
   switchLanguageToFrom = function(toType, fromType) {
     $("." + fromType).each(function() {
       $(this).removeClass(fromType);
@@ -54,9 +54,9 @@ $(document).ready(function() {
   };
 
   if (jQuery.browser.mobile == true) {
-    switchLanguageToFrom('desktop', 'mobile');
-  } else {
     switchLanguageToFrom('mobile', 'desktop');
+  } else {
+    switchLanguageToFrom('desktop', 'mobile');
   };
 
   
