@@ -58,11 +58,17 @@ $(document).ready(function() {
     })
   };
 
-  if (jQuery.browser.mobile == true) {
-    switchLanguageToFrom('mobile', 'desktop');
+  if ($('html').hasClass('ie9') || $('html').hasClass('ie8') || $('html').hasClass('ie7') || $('html').hasClass('ie6')) {
+    $('.desktop').hide();
   } else {
-    switchLanguageToFrom('desktop', 'mobile');
-  };
+    $('.ie').hide();
+    if (jQuery.browser.mobile == true) {
+      switchLanguageToFrom('mobile', 'desktop');
+    } else {
+      switchLanguageToFrom('desktop', 'mobile');
+    };
+  }
+  
 
   
 });
