@@ -36,20 +36,27 @@ $(document).ready(function() {
 
   $('.show-menu').on(
     'click', function(){
-      if (!$('ul.nav-menu').hasClass('switch')){
-        $('ul.nav-menu').slideDown(500);
+      if ($('.nav-menu').css('display') == 'none'){
+        $('.nav-menu').slideDown(500);
         $('.show-menu').css("background", "#ffcd00");
-        $('ul.nav-menu').css("display","block");
-        $('ul.nav-menu').toggleClass('switch');
+
       }
       else{
-        //not working yet
-        $('ul.nav-menu').slideUp(500);
+        $('.nav-menu').slideUp(500);
         $('.show-menu').css("background", "#333");
-        $('ul.nav-menu').css("display","none");
-        $('ul.nav-menu').toggleClass('switch');
+        setTimeout(function() {
+          $('.nav-menu').removeAttr('style');
+        }, 550);
       }
     });
+
+  $('#career-dept li').on
+  ('click', function(){
+    var textTitle = $(this).text();
+    $('.title h1').html(textTitle);
+    $('.title').css("margin-top", "20px");
+    return false;
+  });
 
   switchLanguageToFrom = function(toType, fromType) {
     $("." + fromType).each(function() {

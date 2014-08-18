@@ -25,11 +25,11 @@
   padding: 0;
   margin: 0;
   list-style-type:none;
+  display: block;
 }
 .desktop .nav-menu li { 
   display: inline-block; 
   text-align: center;
-  margin-right: 1px;
 }
 .desktop .nav-menu li:hover { 
   background-color: #555;  
@@ -57,6 +57,18 @@
   background-color: #FFF;
   height: 0;
   padding-bottom: calc(56.25% / 2);
+  padding-top: 0px;
+  margin-top: 20px;
+  min-height: 240px;
+}
+
+.desktop .select-group-test {
+  display: block;
+  position: relative;
+  border: solid 2px #EFEFEF;
+  background-color: #FFF;
+  height: 0;
+  padding-bottom: calc(112.5% / 2);
   padding-top: 0px;
   margin-top: 20px;
   min-height: 240px;
@@ -108,6 +120,27 @@
 }
 .desktop .group-title-main {
   width: 57.4%;
+  height: 45px;
+  min-width: 240px;
+  margin-left: 45px;
+  position: absolute;
+  background: #ACACAC;
+  color: #FFF;
+  padding-top: 5px;
+  padding-left: 10px;
+  -webkit-transform-origin: 0 0;
+  -moz-transform-origin:    0 0;
+  -ms-transform-origin:     0 0;
+  -o-transform-origin:      0 0;
+
+  -webkit-transform: rotate(90deg); 
+  -moz-transform:    rotate(90deg); 
+  -ms-transform:     rotate(90deg); 
+  -o-transform:      rotate(90deg); 
+}
+
+.desktop .group-title-main-test {
+  width: 114.8%;
   height: 45px;
   min-width: 240px;
   margin-left: 45px;
@@ -254,4 +287,82 @@
   font-size: 12px;
   color: #FFF;
   padding-left: 3%;
+}
+@media screen and (max-width : 760px){
+  /*Make dropdown links appear inline*/
+  .desktop .nav-menu {
+    height:auto;
+    display: block;
+  }
+}
+
+@media screen and (max-width : 760px){
+  /*Make dropdown links appear inline*/
+  .desktop .nav-menu {
+    display: none;
+    height:auto;
+  }
+  .desktop .nav-menu li{
+    width: 100%;
+  }
+
+  .desktop .show-menu{
+    display:block;
+  }
+/*  .dropdown-button {
+    position: relative;
+    width: 150px;
+    margin: 0 auto;
+    padding: 2px 3px;
+    background: #fff;
+    border-left: 3px solid grey;
+    cursor: pointer;
+    outline: none;
+    color: #000;
+    font-family: helvetica;
+  }
+  .dropdown-button .dropdown-list{
+    left:-3px;
+  }
+  .dropdown-button .dropdown-list li a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    border-left: 3px solid;
+    padding: 3px;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    }*/
+  }
+
+  .desktop .rectangle-list{
+    max-height: 100%;
+    overflow-y:scroll; 
+  }
+
+  .desktop .rectangle-list li{
+    list-style-type: square;
+    position: relative;
+    padding: .4em .4em .4em .8em;
+    margin: .5em .5em .5em .5em;
+    background: #EFEFEF;
+    color: #000;
+    border:1px solid #CFCFCF;
+    border-left:5px solid grey;
+    text-decoration: none;
+    transition: all .3s ease-out;  
+  }  
+
+  .desktop .title{
+    margin-top: 0px;
+    text-align: center;
+  }
+
+  .desktop .nav-menu li.active{
+    background:#555;
+  }
+
 }
