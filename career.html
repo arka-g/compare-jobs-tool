@@ -1,0 +1,608 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!--[if lt IE 7 ]> <html class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> 
+<html class=""> 
+<!--<![endif]-->
+<head runat="server">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RBC - Mandate Comparison Tool</title>
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.css" />
+    <link type="text/css" rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/main.css"/> 
+    <link rel="stylesheet" href="css/desktop.css"/>
+    <link rel="stylesheet" href="css/mobile.css"/>
+</head>
+<body >
+<div class="ie">
+   <form id="form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+    <div class="container">
+        <%--HEADER\Standard for all pages--%>
+        <table class="tableb" border="1" cellpadding="0" cellspacing="0">
+            <tr>
+                <td width="15%">
+                    <img alt="" src="img/RBC_Logo_1.bmp" style="height: 152px; width: 137px" />
+                </td>
+                <td width="85%">
+                    <h1>
+                        Mandate Comparison Tool</h1>
+                </td>
+            </tr>
+        </table>
+        <%-- Static navbar/Standard for all pages--%>
+        <div class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/default.aspx">Job Families</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="/default.aspx">Mandate Comparison (B)</a></li>
+                        <li><a href="/careerpath.aspx">Career Path</a></li>
+                        <li><a href="/ShowMap.aspx">T&O MAP</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <%--Position Select--%>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel">
+                    <div class="panel-title text-center">
+                        <h3>
+                            Current Position</h3>
+                        <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Always">
+                            <ContentTemplate>
+                                <div class="positioncaution">
+                                    <asp:Literal ID="currWarning" runat="server" Visible="false"></asp:Literal>
+                                </div>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <%-- <div class="col-md-1">
+                            </div>--%>
+                            <div class="col-md-3">
+                                <label>
+                                    Family</label>
+                            </div>
+                            <div class="col-md-9">
+                                <asp:UpdatePanel ID="currFormFamilyPanel" runat="server" UpdateMode="Always">
+                                    <ContentTemplate>
+                                        <asp:DropDownList class="dropdown" ID="currFormFamily" runat="server" AppendDataBoundItems="True"
+                                            EnableViewState="True" OnSelectedIndexChanged="currFormFamily_SelectedIndexChanged"
+                                            AutoPostBack="True">
+                                        </asp:DropDownList>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                                <asp:UpdateProgress ID="currFormFamilyUpdate" runat="server">
+                                    <ProgressTemplate>
+                                        Getting Families...
+                                    </ProgressTemplate>
+                                </asp:UpdateProgress>
+                                <%--<asp:DropDownList class="dropdown" ID="currFormFamily" runat="server" OnSelectedIndexChanged="currFormFamily_SelectedIndexChanged"
+                                    DataSourceID="currFamilyIndex" DataTextField="FamilyFullName" DataValueField="FamilyFullName"
+                                    AutoPostBack="True" EnableViewState="False">
+                                </asp:DropDownList>
+                                <asp:SqlDataSource ID="currFamilyIndex" runat="server" ConnectionString="<%$ ConnectionStrings:JobfamilyConnectionString %>"
+                                    SelectCommand="SELECT DISTINCT [FamilyFullName] FROM [FamilyIndex]"></asp:SqlDataSource>--%>
+                            </div>
+                            <%-- <div class="col-md-1">
+                            </div>--%>
+                        </div>
+                        <div class="row">
+                            <%--<div class="col-md-1">
+                            </div>--%>
+                            <div class="col-md-3">
+                                <label>
+                                    Role</label>
+                            </div>
+                            <div class="col-md-9">
+                                <asp:UpdatePanel ID="currFormRolePanel" runat="server" UpdateMode="Always">
+                                    <ContentTemplate>
+                                        <asp:DropDownList class="dropdown" ID="currFormRole" runat="server" AppendDataBoundItems="True"
+                                            EnableViewState="True" AutoPostBack="True" OnSelectedIndexChanged="currFormRole_SelectedIndexChanged">
+                                        </asp:DropDownList>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                                <asp:UpdateProgress ID="currFormRoleUpdate" runat="server">
+                                    <ProgressTemplate>
+                                        Getting Roles...
+                                    </ProgressTemplate>
+                                </asp:UpdateProgress>
+                                <%--<asp:DropDownList class="dropdown" ID="currFormRole" runat="server" AutoPostBack="True"
+                                    DataSourceID="currRoleIndex" DataTextField="PositionRole" DataValueField="PositionRole"
+                                    OnSelectedIndexChanged="currFormRole_SelectedIndexChanged" OnDataBound="currFormRole_DataBound"
+                                    EnableViewState="False">
+                                </asp:DropDownList>--%>
+                                <%--<asp:SqlDataSource ID="currRoleIndex" runat="server" ConnectionString="<%$ ConnectionStrings:JobfamilyConnectionString %>"
+                                    SelectCommand="SELECT DISTINCT PositionRole FROM Positions WHERE (PositionFamily IN (SELECT PositionFamily FROM FamilyIndex WHERE (FamilyFullName IN (@PositionFamily))))">
+                                    <SelectParameters>
+                                        <asp:ControlParameter ControlID="currFormFamily" Name="PositionFamily" PropertyName="SelectedValue"
+                                            Type="String" />
+                                    </SelectParameters>
+                                </asp:SqlDataSource>--%>
+                            </div>
+                            <%--<div class="col-md-1">
+                            </div>--%>
+                        </div>
+                        <div class="row">
+                            <%-- <div class="col-md-1">
+                            </div>--%>
+                            <div class="col-md-3">
+                                <label>
+                                    Level</label>
+                            </div>
+                            <div class="col-md-9">
+                                <asp:UpdatePanel ID="currFormLevelPanel" runat="server" UpdateMode="Always">
+                                    <ContentTemplate>
+                                        <asp:DropDownList class="dropdown" ID="currFormLevel" runat="server" AppendDataBoundItems="True"
+                                            EnableViewState="True" AutoPostBack="True" OnSelectedIndexChanged="currFormLevel_SelectedIndexChanged">
+                                        </asp:DropDownList>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                                <asp:UpdateProgress ID="currFormLevelUpdate" runat="server">
+                                    <ProgressTemplate>
+                                        Getting Levels...
+                                    </ProgressTemplate>
+                                </asp:UpdateProgress>
+                                <%--<asp:DropDownList class="dropdown" ID="currFormLevel" runat="server" AutoPostBack="True"
+                                    OnSelectedIndexChanged="currFormPLevel_SelectedIndexChanged" DataSourceID="currLevelIndex"
+                                    DataTextField="PositionLevel" DataValueField="PositionLevel" EnableViewState="False">
+                                </asp:DropDownList>
+                                <asp:SqlDataSource ID="currLevelIndex" runat="server" ConnectionString="<%$ ConnectionStrings:JobfamilyConnectionString %>"
+                                    SelectCommand="SELECT DISTINCT [PositionLevel] FROM [Positions] WHERE ([PositionRole] = @PositionRole)">
+                                    <SelectParameters>
+                                        <asp:ControlParameter ControlID="currFormRole" Name="PositionRole" PropertyName="SelectedValue"
+                                            Type="String" />
+                                    </SelectParameters>
+                                </asp:SqlDataSource>--%>
+                            </div>
+                            <%--<div class="col-md-1">
+                            </div>--%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel">
+                    <div class="panel-title text-center">
+                        <h3>
+                            Comparative Position</h3>
+                        <asp:UpdatePanel ID="compWarningPanel" runat="server" UpdateMode="Always">
+                            <ContentTemplate>
+                                <div class="positioncaution">
+                                    <asp:Literal ID="compWarning" runat="server" Visible="false"></asp:Literal>
+                                </div>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <%--<div class="col-md-1">
+                            </div>--%>
+                            <div class="col-md-3">
+                                <label>
+                                    Family</label>
+                            </div>
+                            <div class="col-md-9">
+                                <asp:UpdatePanel ID="compFormFamilyPanel" runat="server" UpdateMode="Always">
+                                    <ContentTemplate>
+                                        <asp:DropDownList class="dropdown" ID="compFormFamily" runat="server" AppendDataBoundItems="True"
+                                            EnableViewState="True" OnSelectedIndexChanged="compFormFamily_SelectedIndexChanged"
+                                            AutoPostBack="True">
+                                        </asp:DropDownList>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                                <asp:UpdateProgress ID="compFormFamilyUpdate" runat="server">
+                                    <ProgressTemplate>
+                                        Getting Families...
+                                    </ProgressTemplate>
+                                </asp:UpdateProgress>
+                            </div>
+                            <%--<div class="col-md-1">
+                            </div>--%>
+                        </div>
+                        <div class="row">
+                            <%-- <div class="col-md-1">
+                            </div>--%>
+                            <div class="col-md-3">
+                                <label>
+                                    Role</label>
+                            </div>
+                            <div class="col-md-9">
+                                <asp:UpdatePanel ID="compFormRolePanel" runat="server" UpdateMode="Always">
+                                    <ContentTemplate>
+                                        <asp:DropDownList class="dropdown" ID="compFormRole" runat="server" AppendDataBoundItems="True"
+                                            EnableViewState="True" AutoPostBack="True" OnSelectedIndexChanged="compFormRole_SelectedIndexChanged">
+                                        </asp:DropDownList>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                                <asp:UpdateProgress ID="compFormRoleUpdate" runat="server">
+                                    <ProgressTemplate>
+                                        Getting Roles...
+                                    </ProgressTemplate>
+                                </asp:UpdateProgress>
+                            </div>
+                            <%--<div class="col-md-1">
+                            </div>--%>
+                        </div>
+                        <div class="row">
+                            <%-- <div class="col-md-1">
+                            </div>--%>
+                            <div class="col-md-3">
+                                <label>
+                                    Level</label>
+                            </div>
+                            <div class="col-md-9">
+                                <asp:UpdatePanel ID="compFormLevelPanel" runat="server" UpdateMode="Always">
+                                    <ContentTemplate>
+                                        <asp:DropDownList class="dropdown" ID="compFormLevel" runat="server" AppendDataBoundItems="True"
+                                            EnableViewState="True" AutoPostBack="True" OnSelectedIndexChanged="compFormLevel_SelectedIndexChanged">
+                                        </asp:DropDownList>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                                <asp:UpdateProgress ID="compFormLevelUpdate" runat="server">
+                                    <ProgressTemplate>
+                                        Getting Levels...
+                                    </ProgressTemplate>
+                                </asp:UpdateProgress>
+                            </div>
+                            <%-- <div class="col-md-1">
+                            </div>--%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%--Choose Mandate--%>
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
+            <ContentTemplate>
+                <asp:Panel ID="chooseMandate" runat="server" Width="100%" Height="100%">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel">
+                                <div class="panel-title text-center">
+                                    <h3>
+                                        Section to Compare</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label>
+                                                <asp:Literal ID="primaryLabel" runat="server">Primary</asp:Literal>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <asp:UpdatePanel ID="primaryCategoryPanel" runat="server">
+                                                <ContentTemplate>
+                                                    <asp:DropDownList class="dropdown" ID="primary" runat="server" AppendDataBoundItems="True"
+                                                        EnableViewState="True" OnSelectedIndexChanged="primary_SelectedIndexChanged"
+                                                        AutoPostBack="True">
+                                                    </asp:DropDownList>
+                                                </ContentTemplate>
+                                            </asp:UpdatePanel>
+                                            <asp:UpdateProgress ID="primaryCategoryUpdate" runat="server">
+                                                <ProgressTemplate>
+                                                    Getting Primary Categories...
+                                                </ProgressTemplate>
+                                            </asp:UpdateProgress>
+                                            <%--<asp:DropDownList class="dropdown" ID="primary" runat="server" AutoPostBack="True"
+                                        DataSourceID="PrimaryCategory" DataTextField="PrimaryCategory" DataValueField="PrimaryCategory"
+                                        OnSelectedIndexChanged="primary_SelectedIndexChanged">
+                                    </asp:DropDownList>
+                                    <asp:SqlDataSource ID="PrimaryCategory" runat="server" ConnectionString="<%$ ConnectionStrings:JobfamilyConnectionString %>"
+                                        SelectCommand="SELECT [PrimaryCategory] FROM [MandatePrimary] ORDER BY [Rank]">
+                                    </asp:SqlDataSource>--%>
+                                        </div>
+                                        <div class="col-md-1">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label>
+                                                <asp:Literal ID="secondaryLabel" runat="server">Secondary</asp:Literal>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <asp:UpdatePanel ID="secondaryCategoryPanel" runat="server">
+                                                <ContentTemplate>
+                                                    <asp:DropDownList class="dropdown" ID="secondary" runat="server" AppendDataBoundItems="True"
+                                                        EnableViewState="True" OnSelectedIndexChanged="secondary_SelectedIndexChanged"
+                                                        AutoPostBack="True">
+                                                    </asp:DropDownList>
+                                                </ContentTemplate>
+                                            </asp:UpdatePanel>
+                                            <asp:UpdateProgress ID="secondaryCategoryUpdate" runat="server">
+                                                <ProgressTemplate>
+                                                    Getting Secondary Categories...
+                                                </ProgressTemplate>
+                                            </asp:UpdateProgress>
+                                            <%-- <asp:DropDownList class="dropdown" ID="secondary" runat="server" AutoPostBack="True"
+                                        DataSourceID="SubCategory" DataTextField="SubCategory" DataValueField="SubCategory"
+                                        OnSelectedIndexChanged="secondary_SelectedIndexChanged" OnDataBound="secondary_DataBound">
+                                    </asp:DropDownList>
+                                    <asp:SqlDataSource ID="SubCategory" runat="server" ConnectionString="<%$ ConnectionStrings:JobfamilyConnectionString %>"
+                                        SelectCommand="SELECT [SubCategory] FROM [MandateSubcategory] WHERE ([PrimaryCategory] = @PrimaryCategory)">
+                                        <SelectParameters>
+                                            <asp:ControlParameter ControlID="primary" Name="PrimaryCategory" PropertyName="SelectedValue"
+                                                Type="String" />
+                                        </SelectParameters>
+                                    </asp:SqlDataSource>--%>
+                                        </div>
+                                        <div class="col-md-1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </asp:Panel>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+        <%--Display--%>
+        <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Always">
+            <ContentTemplate>
+                <asp:Panel ID="display" runat="server" Width="100%" Height="100%">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="panel">
+                                <div class="panel-title text-center">
+                                    <asp:UpdatePanel ID="currFormNamePanel" runat="server">
+                                        <ContentTemplate>
+                                            <h3>
+                                                <asp:Literal ID="currFormName" runat="server" Text="Current Position"></asp:Literal></h3>
+                                        </ContentTemplate>
+                                    </asp:UpdatePanel>
+                                    <asp:UpdateProgress ID="currFormNamePanelUpdate" runat="server">
+                                        <ProgressTemplate>
+                                            Getting Name...
+                                        </ProgressTemplate>
+                                    </asp:UpdateProgress>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <asp:UpdatePanel ID="currFormMandPanel" runat="server">
+                                                <ContentTemplate>
+                                                    <asp:GridView class="gridview" ID="currFormMand" runat="server" ShowHeader="False"
+                                                        CellPadding="4" ForeColor="#333333" GridLines="None">
+                                                        <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                                                        <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                                                        <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                                                        <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                                                        <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                                                        <EditRowStyle BackColor="#999999" />
+                                                        <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                                                    </asp:GridView>
+                                                </ContentTemplate>
+                                            </asp:UpdatePanel>
+                                            <asp:UpdateProgress ID="currFormMandUpdate" runat="server">
+                                                <ProgressTemplate>
+                                                    Getting Mandates...
+                                                </ProgressTemplate>
+                                            </asp:UpdateProgress>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="panel">
+                                <div class="panel-title text-center">
+                                    <asp:UpdatePanel ID="compFormNamePanel" runat="server">
+                                        <ContentTemplate>
+                                            <h3>
+                                                <asp:Literal ID="compFormName" runat="server" Text="Comparative Position"></asp:Literal></h3>
+                                        </ContentTemplate>
+                                    </asp:UpdatePanel>
+                                    <asp:UpdateProgress ID="compFormNameUpdate" runat="server">
+                                        <ProgressTemplate>
+                                            Getting Name...
+                                        </ProgressTemplate>
+                                    </asp:UpdateProgress>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <asp:UpdatePanel ID="compFormMandPanel" runat="server">
+                                                <ContentTemplate>
+                                                    <asp:GridView class="gridview" ID="compFormMand" runat="server" ShowHeader="False"
+                                                        CellPadding="4" ForeColor="#333333" GridLines="None">
+                                                        <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                                                        <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                                                        <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                                                        <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                                                        <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                                                        <EditRowStyle BackColor="#999999" />
+                                                        <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                                                    </asp:GridView>
+                                                </ContentTemplate>
+                                            </asp:UpdatePanel>
+                                            <asp:UpdateProgress ID="compFormMandUpdate" runat="server">
+                                                <ProgressTemplate>
+                                                    Getting Mandates...
+                                                </ProgressTemplate>
+                                            </asp:UpdateProgress>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </asp:Panel>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+        <%--footer--%>
+        <div>
+            <p>
+                Version 1.0 - Claudio Francavilla & Neil Williamson</p>
+        </div>
+    </div>
+    </form>
+</div>
+<div class="desktop">
+    
+
+    <div class="nav-banner">
+        <div id="logoText">
+        </div>
+        <div id="logoPic">
+        </div>
+    </div>
+    
+    <label for="show-menu" class="show-menu">View Menu</label>
+
+    <ul class="nav-menu">
+        <li><a href="index.html">Mandate Comparison</a></li>
+        <li class="active"><a href="career.html">Career Path</a></li>
+    </ul>
+
+    <div class="select-group group-full" style="z-index:100;">
+        <div class="group-title-main">
+            <h1>POSITION</h1>
+        </div>
+        <div class="group-title-sub">
+            <h2>Current</h2>
+        </div>
+
+        <div class="group-front">
+
+            <div class = "dd-wrapper">
+
+                <div class="dropdown-button">
+                    <span>Department</span>
+                    <div class="dropdown-list" >
+                        <ul class="dropdown-list-wrapper" id = "career-dept">
+                            <li><a href="#">Mobile OLB</a></li>
+                            <li><a href="#">Quality Assurance</a></li>
+                            <li><a href="#">Architecture</a></li>
+                            <li><a href="#">Automation</a></li>
+                            <li><a href="#">Scripting</a></li>
+                            <li><a href="#">Mobile OLB</a></li>
+                            <li><a href="#">Quality Assurance</a></li>
+                            <li><a href="#">Architecture</a></li>
+                            <li><a href="#">Automation</a></li>
+                            <li><a href="#">Scripting</a></li>
+                            <li><a href="#">Mobile OLB</a></li>
+                            <li><a href="#">Quality Assurance</a></li>
+                            <li><a href="#">Architecture</a></li>
+                            <li><a href="#">Automation</a></li>
+                            <li><a href="#">Scripting</a></li>
+                        </ul>
+                        <div  class="dropdown-list-down">
+
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dropdown-button">
+                    <span>Job Title</span>
+                    <div class="dropdown-list" >
+                        <ul class="dropdown-list-wrapper">
+                            <li><a href="#">TSA</a></li>
+                            <li><a href="#">BSA</a></li>
+                            <li><a href="#">PI</a></li>
+                            <li><a href="#">Sr. TSA</a></li>
+                            <li><a href="#">Jr. Analyst</a></li>
+                        </ul>
+                        <div  class="dropdown-list-down">
+
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dropdown-button">
+                    <span>Level</span>
+                    <div class="dropdown-list" >
+                        <ul class="dropdown-list-wrapper">
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                        </ul>
+                        <div  class="dropdown-list-down">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="title">
+        <h1 id="title"></h1>
+    </div>
+
+    <div class="select-group-test group-half" style="z-index:5;">
+            <div class="group-title-main-test">
+            <h1>BEFORE</h1>
+        </div>
+        <div class="group-title-sub">
+            <h2>Roles In</h2>
+        </div>
+        <div class="group-front">
+            <ul class="rectangle-list">
+                <li>List item</li>
+                <li>List item</li>
+                <li>List item</li>
+                <li>List item</li>
+                <li>List item</li>
+                <li>List item</li>
+                <li>List item</li>
+                <li>List item</li>
+                <li>List item</li>
+            </ul>           
+        </div>
+    </div>
+    <div class="select-group-test group-half" style="z-index:5;">
+            <div class="group-title-main-test">
+            <h1>AFTER</h1>
+        </div>
+        <div class="group-title-sub">
+            <h2>Roles Out</h2>
+        </div>
+        <div class="group-front">
+            <ul class="rectangle-list">
+                <li>List item</li>
+                <li>List item</li>
+                <li>List item</li>
+                <li>List item</li>
+                <li>List item</li>
+                <li>List item</li>
+                <li>List item</li>
+                <li>List item</li>
+                <li>List item</li>
+            </ul>           
+        </div>
+    </div>
+
+    <div class="nav-footer">
+        <span id="footerText">
+            Version 1.0
+        </span>
+        <div id="footerPic">
+        </div>
+    </div>
+</div>
+</body>
+
+<script type="text/javascript" src="js/lib/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/lib/jquery.browser.mobile.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+
+</html>
