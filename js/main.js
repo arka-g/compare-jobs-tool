@@ -1,3 +1,9 @@
+/*
+Authors: 
+Mingyao Liu
+Arka Ganguli 
+*/
+
 $(document).ready(function() {
   $('.dropdown-button').on(
     'mouseenter', function() {
