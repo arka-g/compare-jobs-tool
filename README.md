@@ -1,4 +1,5 @@
 compare-jobs-tool
 =================
 
-Tool for comparing jobs. Focused on front-end UI design.
+Focused on front-end UI design.
+CSS3, JS, HTML5
